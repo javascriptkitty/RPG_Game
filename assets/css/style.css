@@ -1,0 +1,39 @@
+body {
+  background: url(../images/Vzrh.gif) no-repeat center center fixed;
+  background-size: cover;
+  text-align: center;
+  font-family: "Amarante", cursive;
+  font-size: 18pt;
+}
+h1 {
+  font-family: "Shojumaru", cursive;
+  font-size: 40pt;
+  margin: 50px 0;
+  color: #f5f5f5;
+}
+h2 {
+  color: #f5f5f5;
+  font-size: 24pt;
+}
+.character {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+}
+.wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 60px;
+}
+main {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+img {
+  height: 300px;
+}
