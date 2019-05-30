@@ -4,21 +4,22 @@ body {
   text-align: center;
   font-family: "Amarante", cursive;
   font-size: 18pt;
+  color: #f5f5f5;
+  padding: 50px;
 }
 h1 {
   font-family: "Shojumaru", cursive;
   font-size: 40pt;
-  margin: 50px 0;
-  color: #f5f5f5;
+  margin-bottom: 50px;
 }
 h2 {
-  color: #f5f5f5;
   font-size: 24pt;
 }
 .character {
   display: flex;
   flex-direction: column;
   background-color: #fff;
+  color: #000;
   border-radius: 5px;
   margin: 10px;
   padding: 10px;
@@ -27,13 +28,58 @@ h2 {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin-top: 60px;
+  margin: 60px 0;
 }
-main {
+#allCharacters {
   display: flex;
   justify-content: center;
   margin-top: 20px;
 }
 img {
   height: 300px;
+}
+#yourChar,
+#yourOpponent,
+.attack,
+.counterattack {
+  display: none;
+}
+.duel {
+  display: flex;
+  justify-content: space-between;
+}
+.button {
+  display: flex;
+  justify-content: flex-start;
+}
+#attack:active {
+  background-color: darkred;
+
+  outline: 0;
+}
+#attack {
+  margin-top: 10px;
+  font-family: "Amarante", cursive;
+  font-size: 14pt;
+  border: 0;
+  border-radius: 5px;
+  margin-left: 80px;
+  padding: 5px 10px;
+  display: none;
+  outline: 0;
+}
+.attack,
+.counterattack {
+  background-color: rgba(245, 245, 245, 1);
+  color: darkred;
+  font-size: 16pt;
+  text-align: left;
+  padding: 15px;
+  margin: 5px 20px;
+  border-radius: 10px;
+}
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

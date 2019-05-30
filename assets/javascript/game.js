@@ -1,23 +1,119 @@
 var ji = {
+  name: "Ji Firepaw",
   healthPoints: 180,
   attackPower: 10,
   counterAttackPower: 18
 };
 
 var aysa = {
-  healthPoints: 150,
-  attackPower: 8,
-  counterAttackPower: 15
+  name: "Aysa Cloudsinger",
+  healthPoints: 160,
+  attackPower: 25,
+  counterAttackPower: 8
 };
 
 var chen = {
+  name: "Chen Stormstout",
   healthPoints: 200,
   attackPower: 12,
   counterAttackPower: 20
 };
 
 var taoshi = {
-  healthPoints: 120,
-  attackPower: 6,
+  name: "Taoshi",
+  healthPoints: 140,
+  attackPower: 30,
   counterAttackPower: 15
 };
+
+var charHP;
+var charAP;
+var charCAP;
+var opponentHP;
+var opponentAP;
+var opponentCAP;
+var yourChar = null;
+var yourOpponent = null;
+
+$(document).ready(function() {
+  $("#attack").on("click", function() {
+    //debugger;
+    charHP = yourChar.healthPoints;
+    charAP = yourChar.attackPower;
+    charCAP = yourChar.counterAttackPower;
+    opponentHP = yourOpponent.healthPoints;
+    opponentAP = yourOpponent.attackPower;
+    opponentCAP = yourOpponent.counterAttackPower;
+
+    if (charHP > 0 && opponentHP > 0) {
+      $(".attack").css("display", "block");
+      $(".counterattack").css("display", "block");
+      $(".attack").text(
+        "You attacked " + yourOpponent.name + " for " + charAP + " damage."
+      );
+
+      $(".counterattack").text(
+        yourOpponent.name + " attacked you back for " + opponentCAP + " damage."
+      );
+
+      yourChar.healthPoints = yourChar.healthPoints - opponentCAP;
+      yourChar.attackPower = yourChar.attackPower + 4;
+      yourOpponent.healthPoints = yourOpponent.healthPoints - charAP;
+      $(".curentChar .health").text(yourChar.healthPoints);
+      $(".curentOp .health").text(yourOpponent.healthPoints);
+    }
+
+    if (yourChar.healthPoints <= 0) {
+      alert("GAME OVER! YOU LOST");
+    } else if (
+      yourOpponent.healthPoints <= 0 &&
+      $("#allCharacters")
+        .html()
+        .trim().length !== 0
+    ) {
+      alert(yourOpponent.name + " defeated! Choose the next opponent!");
+      $("#yourOpponent").empty();
+      $("#choseChar").css("display", "block");
+      chooseYourOpponent();
+    } else if (
+      yourOpponent.healthPoints <= 0 &&
+      $("#allCharacters")
+        .html()
+        .trim().length == 0
+    ) {
+      $("#choseChar").css("display", "none");
+      alert("YOU WIN");
+    }
+  });
+
+  $(".character").on("click", function() {
+    if (yourChar == null) {
+      $("#yourChar").css("display", "block");
+      $(this).addClass("curentChar");
+      yourChar = window[$(this).attr("id")];
+      //debugger;
+      $("#yourChar").append($(this));
+
+      $("#choseChar").html("<h2>Choose your opponent</h2>");
+    }
+    chooseYourOpponent();
+  });
+
+  function chooseYourOpponent() {
+    $(".character")
+      .not(".curentChar")
+      .on("click", function() {
+        $("#yourOpponent").css("display", "block");
+
+        $("#yourOpponent").append($(this));
+        $(this).addClass("curentOp");
+        yourOpponent = window[$(this).attr("id")];
+
+        $("#choseChar").css("display", "none");
+        $("#attack").css("display", "block");
+      });
+  }
+});
+
+// 150-20-20-20-20-20-20-20-20
+// 200-8-12-16-20-24-28-32-36-40
