@@ -65,6 +65,7 @@ $(document).ready(function() {
 
     if (yourChar.healthPoints <= 0) {
       alert("GAME OVER! YOU LOST");
+      location.reload();
     } else if (
       yourOpponent.healthPoints <= 0 &&
       $("#allCharacters")
@@ -73,6 +74,7 @@ $(document).ready(function() {
     ) {
       alert(yourOpponent.name + " defeated! Choose the next opponent!");
       $("#yourOpponent").empty();
+
       $("#choseChar").css("display", "block");
       chooseYourOpponent();
     } else if (
@@ -83,13 +85,20 @@ $(document).ready(function() {
     ) {
       $("#choseChar").css("display", "none");
       alert("YOU WIN");
+      location.reload();
     }
   });
 
   $(".character").on("click", function() {
     if (yourChar == null) {
       $("#yourChar").css("display", "block");
+
+      $("#allCharacters .character img").css("height", "200px");
+      $("#allCharacters .character").css("font-size", "16pt");
+      $(".wrapper").css("margin", "20px");
       $(this).addClass("curentChar");
+      $(".curentChar img").css("height", "350px");
+      $(".curentChar").css("font-size", "18pt");
       yourChar = window[$(this).attr("id")];
       //debugger;
       $("#yourChar").append($(this));
@@ -104,9 +113,11 @@ $(document).ready(function() {
       .not(".curentChar")
       .on("click", function() {
         $("#yourOpponent").css("display", "block");
-
+        $("#yourOpponent").html("<h2>Your opponent</h2>");
         $("#yourOpponent").append($(this));
         $(this).addClass("curentOp");
+        $(".curentOp img").css("height", "350px");
+        $(".curentOp").css("font-size", "18pt");
         yourOpponent = window[$(this).attr("id")];
 
         $("#choseChar").css("display", "none");

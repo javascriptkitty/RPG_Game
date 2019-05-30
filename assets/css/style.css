@@ -5,15 +5,17 @@ body {
   font-family: "Amarante", cursive;
   font-size: 18pt;
   color: #f5f5f5;
-  padding: 50px;
+  padding: 40px;
 }
 h1 {
   font-family: "Shojumaru", cursive;
   font-size: 40pt;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
+  text-shadow: 3px 3px #310062;
 }
 h2 {
   font-size: 24pt;
+  text-shadow: 2px 2px #310062;
 }
 .character {
   display: flex;
@@ -23,12 +25,18 @@ h2 {
   border-radius: 5px;
   margin: 10px;
   padding: 10px;
+  cursor: pointer;
 }
+
+.character:hover {
+  box-shadow: 0 0 5px 5px #310062;
+}
+
 .wrapper {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin: 60px 0;
+  margin: 50px 0;
 }
 #allCharacters {
   display: flex;
@@ -53,8 +61,8 @@ img {
   justify-content: flex-start;
 }
 #attack:active {
-  background-color: darkred;
-
+  background-color: #310062;
+  color: #f5f5f5;
   outline: 0;
 }
 #attack {
@@ -63,15 +71,16 @@ img {
   font-size: 14pt;
   border: 0;
   border-radius: 5px;
-  margin-left: 80px;
+  margin-left: 100px;
   padding: 5px 10px;
   display: none;
   outline: 0;
+  cursor: pointer;
 }
 .attack,
 .counterattack {
   background-color: rgba(245, 245, 245, 1);
-  color: darkred;
+  color: #310062;
   font-size: 16pt;
   text-align: left;
   padding: 15px;
