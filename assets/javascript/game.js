@@ -36,6 +36,7 @@ var yourChar = null;
 var yourOpponent = null;
 
 $(document).ready(function() {
+  document.getElementById("player").play();
   $("#attack").on("click", function() {
     //debugger;
     charHP = yourChar.healthPoints;
@@ -94,7 +95,6 @@ $(document).ready(function() {
   $(".character").on("click", function() {
     if (yourChar == null) {
       $("#yourChar").css("display", "block");
-
       $("#allCharacters .character img").css("height", "200px");
       $("#allCharacters .character").css("font-size", "16pt");
       $(".wrapper").css("margin", "20px");
