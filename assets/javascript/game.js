@@ -9,14 +9,14 @@ var aysa = {
   name: "Aysa Cloudsinger",
   healthPoints: 160,
   attackPower: 25,
-  counterAttackPower: 8
+  counterAttackPower: 12
 };
 
 var chen = {
   name: "Chen Stormstout",
   healthPoints: 200,
-  attackPower: 12,
-  counterAttackPower: 20
+  attackPower: 18,
+  counterAttackPower: 10
 };
 
 var taoshi = {
@@ -57,7 +57,7 @@ $(document).ready(function() {
       );
 
       yourChar.healthPoints = yourChar.healthPoints - opponentCAP;
-      yourChar.attackPower = yourChar.attackPower + 4;
+      yourChar.attackPower = yourChar.attackPower + 6;
       yourOpponent.healthPoints = yourOpponent.healthPoints - charAP;
       $(".curentChar .health").text(yourChar.healthPoints);
       $(".curentOp .health").text(yourOpponent.healthPoints);
@@ -74,6 +74,8 @@ $(document).ready(function() {
     ) {
       alert(yourOpponent.name + " defeated! Choose the next opponent!");
       $("#yourOpponent").empty();
+      $(".attack").text("Choose the next opponent!");
+      $(".counterattack").css("display", "none");
 
       $("#choseChar").css("display", "block");
       chooseYourOpponent();
@@ -115,6 +117,7 @@ $(document).ready(function() {
         $("#yourOpponent").css("display", "block");
         $("#yourOpponent").html("<h2>Your opponent</h2>");
         $("#yourOpponent").append($(this));
+
         $(this).addClass("curentOp");
         $(".curentOp img").css("height", "350px");
         $(".curentOp").css("font-size", "18pt");
@@ -122,9 +125,8 @@ $(document).ready(function() {
 
         $("#choseChar").css("display", "none");
         $("#attack").css("display", "block");
+        $(".attack").css("display", "block");
+        $(".attack").text("Attack your enemy!");
       });
   }
 });
-
-// 150-20-20-20-20-20-20-20-20
-// 200-8-12-16-20-24-28-32-36-40
